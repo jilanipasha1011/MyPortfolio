@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <!-- KEY FIX: viewport for proper mobile scaling, plus prevent zoom issues -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Jilani Portfolio · responsive</title>
   <!-- Google fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS scroll reveal library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -29,7 +32,8 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
-      width: 100%;          /* ensure body fills width on mobile */
+      width: 100%;
+      /* ensure body fills width on mobile */
     }
 
     /* particles (same) */
@@ -54,8 +58,15 @@
     }
 
     @keyframes float {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-      100% { transform: translate(5vw, 5vh) scale(1.2); opacity: 0.7; }
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: translate(5vw, 5vh) scale(1.2);
+        opacity: 0.7;
+      }
     }
 
     .glass {
@@ -64,14 +75,15 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(100, 150, 255, 0.2);
       border-radius: 28px;
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
-      width: 100%;           /* fixes overflow on small devices */
+      width: 100%;
+      /* fixes overflow on small devices */
     }
 
     section {
@@ -86,7 +98,9 @@
       font-weight: 600;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -111,8 +125,9 @@
       background: rgba(10, 10, 20, 0.5);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(0, 200, 255, 0.15);
-      box-shadow: 0 10px 30px -10px rgba(0,180,255,0.2);
-      flex-wrap: wrap;          /* allows wrap on mobile */
+      box-shadow: 0 10px 30px -10px rgba(0, 180, 255, 0.2);
+      flex-wrap: wrap;
+      /* allows wrap on mobile */
       gap: 12px 20px;
     }
 
@@ -123,14 +138,17 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      white-space: nowrap;      /* keep logo in one line */
+      white-space: nowrap;
+      /* keep logo in one line */
     }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;           /* so links don't overflow */
+      flex-wrap: wrap;
+      /* so links don't overflow */
       justify-content: center;
-      gap: 8px 16px;            /* consistent spacing */
+      gap: 8px 16px;
+      /* consistent spacing */
     }
 
     .nav-links a {
@@ -140,7 +158,8 @@
       transition: 0.2s;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
-      font-size: 1rem;          /* base size, but will adapt */
+      font-size: 1rem;
+      /* base size, but will adapt */
       white-space: nowrap;
     }
 
@@ -155,11 +174,13 @@
       display: flex;
       align-items: center;
       gap: 40px;
-      flex-wrap: wrap;           /* crucial: image drops below on mobile */
+      flex-wrap: wrap;
+      /* crucial: image drops below on mobile */
     }
 
     .hero-content {
-      flex: 1 1 400px;           /* grow, shrink, base */
+      flex: 1 1 400px;
+      /* grow, shrink, base */
       max-width: 800px;
     }
 
@@ -196,8 +217,10 @@
       border: none;
       cursor: pointer;
       font-size: 1.1rem;
-      margin-right: 15px;         /* space between buttons */
-      margin-bottom: 10px;        /* for mobile stacking */
+      margin-right: 15px;
+      /* space between buttons */
+      margin-bottom: 10px;
+      /* for mobile stacking */
     }
 
     .glow-btn:hover {
@@ -238,9 +261,11 @@
 
     .profile-image-wrapper img {
       width: 100%;
-      max-width: 320px;          /* limit size */
+      max-width: 320px;
+      /* limit size */
       height: auto;
-      aspect-ratio: 1/1;         /* keep circle */
+      aspect-ratio: 1/1;
+      /* keep circle */
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid rgba(56, 189, 248, 0.6);
@@ -281,9 +306,9 @@
     .progress-bar-bg {
       width: 100%;
       height: 12px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 30px;
-      border: 1px solid rgba(0,255,255,0.1);
+      border: 1px solid rgba(0, 255, 255, 0.1);
       overflow: hidden;
     }
 
@@ -313,7 +338,7 @@
       transform-style: preserve-3d;
       transform: perspective(800px) rotateX(0deg) rotateY(0deg);
       will-change: transform;
-      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.6);
     }
 
     .project-card h3 {
@@ -325,7 +350,8 @@
       display: flex;
       gap: 16px;
       margin: 24px 0 12px;
-      flex-wrap: wrap;           /* buttons don't overflow */
+      flex-wrap: wrap;
+      /* buttons don't overflow */
     }
 
     .btn-live {
@@ -376,7 +402,8 @@
     }
 
     .cert-card a {
-      word-break: break-word;    /* long links wrap */
+      word-break: break-word;
+      /* long links wrap */
       margin-top: 8px;
     }
 
@@ -393,11 +420,12 @@
       margin-bottom: 32px;
     }
 
-    .input-group input, .input-group textarea {
+    .input-group input,
+    .input-group textarea {
       width: 100%;
       padding: 16px 20px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(0,200,255,0.2);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 200, 255, 0.2);
       border-radius: 30px;
       font-size: 1.1rem;
       color: white;
@@ -417,20 +445,21 @@
       padding: 0 5px;
     }
 
-    .input-group textarea ~ label {
+    .input-group textarea~label {
       top: 30px;
       transform: none;
     }
 
-    .input-group input:focus, .input-group textarea:focus {
+    .input-group input:focus,
+    .input-group textarea:focus {
       border-color: #a78bfa;
       box-shadow: 0 0 20px #4f46e5, 0 0 5px #38bdf8 inset;
     }
 
-    .input-group input:focus ~ label,
-    .input-group input:not(:placeholder-shown) ~ label,
-    .input-group textarea:focus ~ label,
-    .input-group textarea:not(:placeholder-shown) ~ label {
+    .input-group input:focus~label,
+    .input-group input:not(:placeholder-shown)~label,
+    .input-group textarea:focus~label,
+    .input-group textarea:not(:placeholder-shown)~label {
       top: -10px;
       left: 15px;
       font-size: 0.8rem;
@@ -439,7 +468,8 @@
       color: #38bdf8;
     }
 
-    .input-group input::placeholder, .input-group textarea::placeholder {
+    .input-group input::placeholder,
+    .input-group textarea::placeholder {
       color: transparent;
     }
 
@@ -464,7 +494,7 @@
     footer {
       text-align: center;
       padding: 30px;
-      border-top: 1px solid rgba(0,200,255,0.1);
+      border-top: 1px solid rgba(0, 200, 255, 0.1);
       margin-top: 30px;
     }
 
@@ -483,10 +513,18 @@
 
     /* ========== RESPONSIVE FIXES (compact, mobile-first) ========== */
     @media (max-width: 768px) {
-      h2 { font-size: 2.2rem; }
-      .hero h1 { font-size: 2.8rem; }
-      .typed-container { font-size: 1.6rem; }
-      
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .typed-container {
+        font-size: 1.6rem;
+      }
+
       .navbar {
         flex-direction: column;
         align-items: stretch;
@@ -494,63 +532,120 @@
         margin: 12px 16px 0;
         padding: 16px;
       }
+
       .nav-links {
         justify-content: center;
       }
+
       .nav-links a {
         font-size: 0.95rem;
         margin: 0 4px;
       }
+
       .hero {
         flex-direction: column;
         text-align: center;
         gap: 20px;
       }
+
       .hero-content {
         flex: auto;
         width: 100%;
       }
-      .glow-btn, .resume-btn {
+
+      .glow-btn,
+      .resume-btn {
         padding: 14px 30px;
         font-size: 1rem;
         margin-right: 8px;
       }
+
       .profile-image-wrapper img {
         max-width: 260px;
       }
+
       .about-card {
         padding: 30px;
       }
+
       .project-card h3 {
         font-size: 1.6rem;
       }
+
       .contact-form {
         padding: 30px 20px;
       }
     }
 
     @media (max-width: 480px) {
-      section { padding: 60px 0; }
-      h2 { font-size: 1.9rem; }
-      .hero h1 { font-size: 2.2rem; }
-      .typed-container { font-size: 1.3rem; min-height: 3rem; }
-      .navbar { padding: 12px; }
-      .nav-links a { font-size: 0.85rem; }
-      .glow-btn, .resume-btn {
+      section {
+        padding: 60px 0;
+      }
+
+      h2 {
+        font-size: 1.9rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .typed-container {
+        font-size: 1.3rem;
+        min-height: 3rem;
+      }
+
+      .navbar {
+        padding: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      .glow-btn,
+      .resume-btn {
         display: block;
         width: 100%;
         margin: 10px 0 0;
         text-align: center;
       }
-      .glow-btn { margin-top: 0; }
-      .resume-btn { justify-content: center; }
-      .skills-grid { gap: 20px; }
-      .projects-grid { gap: 24px; }
-      .project-card { padding: 20px; }
-      .cert-card { padding: 20px 12px; }
-      .profile-image-wrapper img { max-width: 220px; }
-      .about-card { padding: 24px; }
-      .container { padding: 0 16px; }
+
+      .glow-btn {
+        margin-top: 0;
+      }
+
+      .resume-btn {
+        justify-content: center;
+      }
+
+      .skills-grid {
+        gap: 20px;
+      }
+
+      .projects-grid {
+        gap: 24px;
+      }
+
+      .project-card {
+        padding: 20px;
+      }
+
+      .cert-card {
+        padding: 20px 12px;
+      }
+
+      .profile-image-wrapper img {
+        max-width: 220px;
+      }
+
+      .about-card {
+        padding: 24px;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
     }
 
     /* minor fix: certificate links color */
@@ -560,16 +655,28 @@
       font-weight: 500;
       border-bottom: 1px dotted;
     }
-    .cert-card a:hover { color: #a78bfa; }
+
+    .cert-card a:hover {
+      color: #a78bfa;
+    }
   </style>
 </head>
+
 <body>
   <!-- floating particles (unchanged) -->
   <div class="particles">
-    <div class="particle" style="width: 400px; height: 400px; top: 5%; left: -5%; background: radial-gradient(circle, #4f46e580, #0891b280); animation-duration: 16s;"></div>
-    <div class="particle" style="width: 600px; height: 600px; bottom: -10%; right: -5%; background: radial-gradient(circle, #a855f780, #0284c780); animation-duration: 22s; filter: blur(70px);"></div>
-    <div class="particle" style="width: 350px; height: 350px; top: 40%; left: 20%; background: #2563eb30; filter: blur(60px); animation-duration: 19s;"></div>
-    <div class="particle" style="width: 500px; height: 500px; top: 70%; left: 70%; background: #06b6d440; filter: blur(80px); animation-duration: 25s;"></div>
+    <div class="particle"
+      style="width: 400px; height: 400px; top: 5%; left: -5%; background: radial-gradient(circle, #4f46e580, #0891b280); animation-duration: 16s;">
+    </div>
+    <div class="particle"
+      style="width: 600px; height: 600px; bottom: -10%; right: -5%; background: radial-gradient(circle, #a855f780, #0284c780); animation-duration: 22s; filter: blur(70px);">
+    </div>
+    <div class="particle"
+      style="width: 350px; height: 350px; top: 40%; left: 20%; background: #2563eb30; filter: blur(60px); animation-duration: 19s;">
+    </div>
+    <div class="particle"
+      style="width: 500px; height: 500px; top: 70%; left: 70%; background: #06b6d440; filter: blur(80px); animation-duration: 25s;">
+    </div>
   </div>
 
   <!-- navbar (no change, but now mobile friendly due to CSS) -->
@@ -594,11 +701,13 @@
           <span>I'm </span><span id="typed-text"></span>
         </div>
         <a href="#contact" class="glow-btn">Let's connect</a>
-        <a href="jilani General CV.pdf" class="resume-btn" id="resumeDownload"><i class="fas fa-download"></i> Download CV</a>
+        <a href="https://drive.google.com/file/d/1x6jfx69WCbaajYHR3vbA6wP1QYLRLx5P/view?usp=sharing" class="resume-btn"
+          id="resumeDownload"><i class="fas fa-download"></i> Download CV</a>
       </div>
 
       <div class="profile-image-wrapper" data-aos="fade-left">
-        <img src="formal image.jpeg" alt="jilani" style="width:70%; height: 70%; object-fit: cover; border-radius: 50%;">
+        <img src="formal image.jpeg" alt="jilani"
+          style="width:70%; height: 70%; object-fit: cover; border-radius: 50%;">
       </div>
     </section>
 
@@ -606,8 +715,12 @@
     <section id="about" data-aos="fade-up">
       <h2>About me</h2>
       <div class="about-card glass">
-        <p style="font-size: 1.3rem;">I'm Jilani, Computer Science student & aspiring AI/ML engineer. I love turning data into intelligence into reality. I Currently building deep learning models and LLM & RAG based Systems & LLM Fine Tuning And I also work with Android development, contributing to open-source. Always exploring the edge of AI.</p>
-        <p style="margin-top: 20px; color: #b0d0ff;"><i class="fas fa-map-pin" style="color: #38bdf8;"></i> Noida Delhi / remote</p>
+        <p style="font-size: 1.3rem;">I'm Jilani, Computer Science student & aspiring AI/ML engineer. I love turning
+          data into intelligence into reality. I Currently building deep learning models and LLM & RAG based Systems &
+          LLM Fine Tuning And I also work with Android development, contributing to open-source. Always exploring the
+          edge of AI.</p>
+        <p style="margin-top: 20px; color: #b0d0ff;"><i class="fas fa-map-pin" style="color: #38bdf8;"></i> Noida Delhi
+          / remote</p>
       </div>
     </section>
 
@@ -617,34 +730,114 @@
       <div class="skills-grid" id="skillsContainer">
         <div class="glass" style="padding: 30px;">
           <h3 style="margin-bottom: 24px; color: #38bdf8;">Programming languages</h3>
-          <div class="skill-item" data-percent="90"><div class="skill-header"><span>Python</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="85"><div class="skill-header"><span>java:</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="80"><div class="skill-header"><span>SQL </span><span>80%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="80"><div class="skill-header"><span>HTML & CSS </span><span>80%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
+          <div class="skill-item" data-percent="90">
+            <div class="skill-header"><span>Python</span><span>90%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="85">
+            <div class="skill-header"><span>java:</span><span>85%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="80">
+            <div class="skill-header"><span>SQL </span><span>80%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="80">
+            <div class="skill-header"><span>HTML & CSS </span><span>80%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
 
         <div class="glass" style="padding: 30px;">
           <h3 style="margin-bottom: 24px; color: #38bdf8;">Technologies & Core</h3>
-          <div class="skill-item" data-percent="75"><div class="skill-header"><span>Generative AI </span><span>75%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="70"><div class="skill-header"><span>Deep Learning </span><span>70%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>Machine Learning </span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>Android Developer </span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
+          <div class="skill-item" data-percent="75">
+            <div class="skill-header"><span>Generative AI </span><span>75%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="70">
+            <div class="skill-header"><span>Deep Learning </span><span>70%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>Machine Learning </span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>Android Developer </span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
 
         <div class="glass" style="padding: 30px;">
           <h3 style="margin-bottom: 24px; color: #38bdf8;">Frameworks & Libraries</h3>
-          <div class="skill-item" data-percent="75"><div class="skill-header"><span>Streamlit </span><span>75%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="70"><div class="skill-header"><span>Scikit Learn </span><span>70%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>Pandas</span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>LangChain</span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
+          <div class="skill-item" data-percent="75">
+            <div class="skill-header"><span>Streamlit </span><span>75%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="70">
+            <div class="skill-header"><span>Scikit Learn </span><span>70%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>Pandas</span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>LangChain</span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
 
         <div class="glass" style="padding: 30px;">
           <h3 style="margin-bottom: 24px; color: #38bdf8;">Tools/Platforms</h3>
-          <div class="skill-item" data-percent="75"><div class="skill-header"><span>MySQL</span><span>75%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="70"><div class="skill-header"><span>Jupyter Notebook </span><span>70%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>GitHub</span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
-          <div class="skill-item" data-percent="65"><div class="skill-header"><span>Android Studio</span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 0%;"></div></div></div>
+          <div class="skill-item" data-percent="75">
+            <div class="skill-header"><span>MySQL</span><span>75%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="70">
+            <div class="skill-header"><span>Jupyter Notebook </span><span>70%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>GitHub</span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="skill-item" data-percent="65">
+            <div class="skill-header"><span>Android Studio</span><span>65%</span></div>
+            <div class="progress-bar-bg">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -657,9 +850,15 @@
 
         <div class="project-card tilt-card">
           <h3 class="gradient-text">Agentic Chatbot Platform</h3>
-          <p>A production-ready AI Agent platform built using LangGraph, FastAPI, and React. The system features real-time typewriter streaming responses, persistent chat memory, intelligent web search integration with Tavily, and dynamic model routing between Groq and OpenAI for optimized performance and low-latency AI interactions. Successfully deployed in production with the frontend hosted on Vercel and the backend deployed on Render, delivering a fully live and scalable end-to-end AI application.<br>
+          <p>A production-ready AI Agent platform built using LangGraph, FastAPI, and React. The system features
+            real-time typewriter streaming responses, persistent chat memory, intelligent web search integration with
+            Tavily, and dynamic model routing between Groq and OpenAI for optimized performance and low-latency AI
+            interactions. Successfully deployed in production with the frontend hosted on Vercel and the backend
+            deployed on Render, delivering a fully live and scalable end-to-end AI application.<br>
           </p>
-          <div class="project-btns"><a href="https://agentic-chatbot-fastapi.vercel.app/" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/AGENTIC-CHATBOT-FASTAPI" class="btn-live">GitHub</a></div>
+          <div class="project-btns"><a href="https://agentic-chatbot-fastapi.vercel.app/" class="btn-live"><i
+                class="fas fa-rocket"></i> Live demo</a><a
+              href="https://github.com/jilanipasha1011/AGENTIC-CHATBOT-FASTAPI" class="btn-live">GitHub</a></div>
         </div>
 
 
@@ -667,30 +866,44 @@
 
         <div class="project-card tilt-card">
           <h3 class="gradient-text">Check-Startup-Validator With AI Powered</h3>
-          <p>Check-Startup-Validator is an AI-powered platform that analyzes startup ideas using a LangGraph multi-agent pipeline. It evaluates market demand, competitors, revenue models, and MVP planning with Groq AI and Tavily web search. Built with FastAPI and React, the project is fully deployed on Render and Vercel.<br>
+          <p>Check-Startup-Validator is an AI-powered platform that analyzes startup ideas using a LangGraph multi-agent
+            pipeline. It evaluates market demand, competitors, revenue models, and MVP planning with Groq AI and Tavily
+            web search. Built with FastAPI and React, the project is fully deployed on Render and Vercel.<br>
           </p>
-          <div class="project-btns"><a href="https://check-startup-validator.vercel.app/" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/CHECK-STARTUP-VALIDATOR" class="btn-live">GitHub</a></div>
+          <div class="project-btns"><a href="https://check-startup-validator.vercel.app/" class="btn-live"><i
+                class="fas fa-rocket"></i> Live demo</a><a
+              href="https://github.com/jilanipasha1011/CHECK-STARTUP-VALIDATOR" class="btn-live">GitHub</a></div>
         </div>
 
 
 
         <div class="project-card tilt-card">
           <h3 class="gradient-text">AIAdvocate Agent</h3>
-          <p>Built an AI-powered legal assistant for Indian law to help users understand rights, analyze case documents, and get suggestions using IPC, CrPC, and the Constitution. Implemented LLM with RAG architecture and planned features like multilingual support, voice-enabled filing, predictive outcomes, and Supreme Court database integration.<br>
-            <b style="color: #38bdf8;">Tech Stack:</b> Python, Streamlit, LLM, RAG, LangChain, Groq API (LLaMA 3.3 70B), FAISS Vector Database, Tavily API
+          <p>Built an AI-powered legal assistant for Indian law to help users understand rights, analyze case documents,
+            and get suggestions using IPC, CrPC, and the Constitution. Implemented LLM with RAG architecture and planned
+            features like multilingual support, voice-enabled filing, predictive outcomes, and Supreme Court database
+            integration.<br>
+            <b style="color: #38bdf8;">Tech Stack:</b> Python, Streamlit, LLM, RAG, LangChain, Groq API (LLaMA 3.3 70B),
+            FAISS Vector Database, Tavily API
           </p>
-          <div class="project-btns"><a href="#" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/AIAdvocate-Using-LLM-RAG" class="btn-live">GitHub</a></div>
+          <div class="project-btns"><a href="#" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a
+              href="https://github.com/jilanipasha1011/AIAdvocate-Using-LLM-RAG" class="btn-live">GitHub</a></div>
         </div>
-        
+
 
 
 
         <div class="project-card tilt-card">
           <h3 class="gradient-text">Data Speed Tester</h3>
-          <p>Developed a Data Speed Tester web app using HTML, CSS, and JavaScript to measure internet speed in real-time. Implemented interactive UI and visual feedback to display download, upload, and latency results efficiently.<br>
-            <b style="color: #38bdf8;">Tech Stack:</b> HTML, CSS, JavaScript, Fetch API, Chart.js, UI Design, Real-time Data Visualization.
+          <p>Developed a Data Speed Tester web app using HTML, CSS, and JavaScript to measure internet speed in
+            real-time. Implemented interactive UI and visual feedback to display download, upload, and latency results
+            efficiently.<br>
+            <b style="color: #38bdf8;">Tech Stack:</b> HTML, CSS, JavaScript, Fetch API, Chart.js, UI Design, Real-time
+            Data Visualization.
           </p>
-          <div class="project-btns"><a href="https://data-speed-tester.vercel.app/" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/data-speed-tester" class="btn-live">GitHub</a></div>
+          <div class="project-btns"><a href="https://data-speed-tester.vercel.app/" class="btn-live"><i
+                class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/data-speed-tester"
+              class="btn-live">GitHub</a></div>
         </div>
       </div>
     </section>
@@ -699,17 +912,29 @@
     <section id="certifications" data-aos="fade-up">
       <h2>Certifications</h2>
       <div class="certs-grid">
-        <div class="cert-card"><i class="fas fa-database"></i><h3>Data Science With AI/ML</h3><p>LPU Enhancement</p>
-          <a href="https://drive.google.com/file/d/1us6Cewvicl_7eqxFufLmO_A9ZdJSomol/view?usp=sharing">Certificate Link</a>
+        <div class="cert-card"><i class="fas fa-database"></i>
+          <h3>Data Science With AI/ML</h3>
+          <p>LPU Enhancement</p>
+          <a href="https://drive.google.com/file/d/1us6Cewvicl_7eqxFufLmO_A9ZdJSomol/view?usp=sharing">Certificate
+            Link</a>
         </div>
-        <div class="cert-card"><i class="fas fa-brain"></i><h3> Generative AI</h3><p>Udemy</p>
-            <a href="https://drive.google.com/file/d/1Vhw6Zm-UhnPn1QyJluAjEQetElHbjX9r/view?usp=sharing">Certificate Link</a>
+        <div class="cert-card"><i class="fas fa-brain"></i>
+          <h3> Generative AI</h3>
+          <p>Udemy</p>
+          <a href="https://drive.google.com/file/d/1Vhw6Zm-UhnPn1QyJluAjEQetElHbjX9r/view?usp=sharing">Certificate
+            Link</a>
         </div>
-        <div class="cert-card"><i class="fas fa-shield-alt"></i><h3> Introduction to Ethical Hacking </h3><p>Greate Learning</p>
-            <a href="https://drive.google.com/file/d/1yomBnrBZobZZ7GtwDL_9QHgFnMMjEyT6/view?usp=sharing">Certificate Link</a>
+        <div class="cert-card"><i class="fas fa-shield-alt"></i>
+          <h3> Introduction to Ethical Hacking </h3>
+          <p>Greate Learning</p>
+          <a href="https://drive.google.com/file/d/1yomBnrBZobZZ7GtwDL_9QHgFnMMjEyT6/view?usp=sharing">Certificate
+            Link</a>
         </div>
-        <div class="cert-card"><i class="fas fa-code"></i><h3>Java Programming</h3><p>LPU Department</p>
-            <a href="https://drive.google.com/file/d/1or8hZ2ix1a4VEJRYzjBa0vSPXhKGaouX/view?usp=sharing">Certificate Link</a>
+        <div class="cert-card"><i class="fas fa-code"></i>
+          <h3>Java Programming</h3>
+          <p>LPU Department</p>
+          <a href="https://drive.google.com/file/d/1or8hZ2ix1a4VEJRYzjBa0vSPXhKGaouX/view?usp=sharing">Certificate
+            Link</a>
         </div>
       </div>
     </section>
@@ -719,35 +944,38 @@
       <h2>Training & Experience</h2>
       <div class="about-card glass">
         <h1 style="margin-bottom: 24px; color: #38bdf8;">Data Scientist With AI / ML</h1>
-        <p style="font-size: 1.3rem;">Completed a practical Data Science training focused on transforming raw data into meaningful, actionable insights. 
-        Gained hands-on experience in data preprocessing, cleaning, and visualization. 
-        Built and evaluated predictive models using real-world datasets.<br> 
-        <b style="color: #38bdf8;">Tech Stack:</b> Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Jupyter Notebook, Power BI </p>
+        <p style="font-size: 1.3rem;">Completed a practical Data Science training focused on transforming raw data into
+          meaningful, actionable insights.
+          Gained hands-on experience in data preprocessing, cleaning, and visualization.
+          Built and evaluated predictive models using real-world datasets.<br>
+          <b style="color: #38bdf8;">Tech Stack:</b> Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn,
+          Jupyter Notebook, Power BI
+        </p>
       </div>
     </section>
 
     <!-- contact -->
     <!-- contact with animated form -->
-  <section id="contact" data-aos="fade-up">
-    <h2>Let's innovate together</h2>
-    <div class="contact-form glass">
-      <form id="contactForm" action="https://formspree.io/f/maqdarwy" method="POST">
-        <div class="input-group">
-          <input type="text" id="name" name="name" placeholder=" " required>
-          <label for="name">Full name</label>
-        </div>
-        <div class="input-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email">Email address</label>
-        </div>
-        <div class="input-group">
-          <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
-          <label for="message">Your message</label>
-        </div>
-        <button type="submit" class="submit-btn">Send message <i class="fas fa-paper-plane"></i></button>
-      </form>
-    </div>
-  </section>
+    <section id="contact" data-aos="fade-up">
+      <h2>Let's innovate together</h2>
+      <div class="contact-form glass">
+        <form id="contactForm" action="https://formspree.io/f/maqdarwy" method="POST">
+          <div class="input-group">
+            <input type="text" id="name" name="name" placeholder=" " required>
+            <label for="name">Full name</label>
+          </div>
+          <div class="input-group">
+            <input type="email" id="email" name="email" placeholder=" " required>
+            <label for="email">Email address</label>
+          </div>
+          <div class="input-group">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Your message</label>
+          </div>
+          <button type="submit" class="submit-btn">Send message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -762,7 +990,7 @@
   <!-- scripts (unchanged) -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    (function() {
+    (function () {
       AOS.init({ duration: 800, once: true, offset: 120 });
 
       const typedSpan = document.getElementById('typed-text');
@@ -825,4 +1053,5 @@
     })();
   </script>
 </body>
+
 </html>
