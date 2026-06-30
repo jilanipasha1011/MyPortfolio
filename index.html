@@ -1,1057 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <!-- KEY FIX: viewport for proper mobile scaling, plus prevent zoom issues -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Jilani Portfolio · responsive</title>
-  <!-- Google fonts & Font Awesome -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Labs | Premium AI & Web Engineering Agency</title>
+  <meta name="description" content="We build custom Agentic AI workflows, LangGraph solutions, high-converting SaaS platforms, and secure RAG search systems. Scale your operations today.">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- AOS scroll reveal library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    /* ----- RESET & BASE (unchanged structure, only mobile fixes added) ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', 'Poppins', sans-serif;
-      background-color: #0a0a0f;
-      color: #e0e0ff;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-      width: 100%;
-      /* ensure body fills width on mobile */
-    }
-
-    /* particles (same) */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle at 30% 30%, rgba(120, 100, 255, 0.25), rgba(0, 200, 255, 0.1));
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: float 20s infinite ease-in-out alternate;
-      will-change: transform, opacity;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.4;
-      }
-
-      100% {
-        transform: translate(5vw, 5vh) scale(1.2);
-        opacity: 0.7;
-      }
-    }
-
-    .glass {
-      background: rgba(20, 20, 40, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(100, 150, 255, 0.2);
-      border-radius: 28px;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-      /* fixes overflow on small devices */
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #a78bfa, #38bdf8, #22d3ee);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    /* ----- NAVBAR (major mobile fix) ----- */
-    .navbar {
-      position: sticky;
-      top: 16px;
-      z-index: 100;
-      margin: 16px 24px 0;
-      padding: 12px 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 60px;
-      background: rgba(10, 10, 20, 0.5);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 200, 255, 0.15);
-      box-shadow: 0 10px 30px -10px rgba(0, 180, 255, 0.2);
-      flex-wrap: wrap;
-      /* allows wrap on mobile */
-      gap: 12px 20px;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(145deg, #c084fc, #2dd4bf);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      white-space: nowrap;
-      /* keep logo in one line */
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      /* so links don't overflow */
-      justify-content: center;
-      gap: 8px 16px;
-      /* consistent spacing */
-    }
-
-    .nav-links a {
-      color: #ddd;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
-      font-size: 1rem;
-      /* base size, but will adapt */
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: white;
-      border-bottom-color: #38bdf8;
-    }
-
-    /* ----- HERO (flex fix for image & text) ----- */
-    .hero {
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      /* crucial: image drops below on mobile */
-    }
-
-    .hero-content {
-      flex: 1 1 400px;
-      /* grow, shrink, base */
-      max-width: 800px;
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .typed-container {
-      font-size: 2.2rem;
-      font-weight: 500;
-      margin: 20px 0 30px;
-      min-height: 4rem;
-    }
-
-    #typed-text {
-      color: #ffffff;
-      border-right: 3px solid #38bdf8;
-      padding-right: 8px;
-    }
-
-    .glow-btn {
-      display: inline-block;
-      background: linear-gradient(45deg, #4f46e5, #06b6d4);
-      color: white;
-      font-weight: 600;
-      padding: 16px 42px;
-      border-radius: 50px;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 20px #4f46e5, 0 0 40px #06b6d480;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      margin-right: 15px;
-      /* space between buttons */
-      margin-bottom: 10px;
-      /* for mobile stacking */
-    }
-
-    .glow-btn:hover {
-      box-shadow: 0 0 30px #a78bfa, 0 0 60px #38bdf8;
-      transform: scale(1.02);
-    }
-
-    .resume-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 2px solid #38bdf8;
-      color: white;
-      font-weight: 600;
-      padding: 16px 42px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-
-    .resume-btn:hover {
-      background: #38bdf8;
-      color: #0a0a0f;
-      box-shadow: 0 0 20px #38bdf8;
-      border-color: transparent;
-    }
-
-    .profile-image-wrapper {
-      flex: 1 1 300px;
-      display: flex;
-      justify-content: center;
-      min-width: 240px;
-    }
-
-    .profile-image-wrapper img {
-      width: 100%;
-      max-width: 320px;
-      /* limit size */
-      height: auto;
-      aspect-ratio: 1/1;
-      /* keep circle */
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid rgba(56, 189, 248, 0.6);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
-      transition: 0.4s ease;
-    }
-
-    .profile-image-wrapper img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 60px rgba(167, 139, 250, 0.7);
-    }
-
-    /* about card */
-    .about-card {
-      padding: 40px;
-      border-radius: 40px;
-    }
-
-    /* skills grid (already responsive with auto-fit) */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-
-    .skill-item {
-      margin-bottom: 24px;
-    }
-
-    .skill-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .progress-bar-bg {
-      width: 100%;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 30px;
-      border: 1px solid rgba(0, 255, 255, 0.1);
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #a855f7, #3b82f6, #22d3ee);
-      border-radius: 30px;
-      transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    /* projects grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .project-card {
-      background: rgba(15, 20, 30, 0.5);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(0, 200, 255, 0.2);
-      border-radius: 32px;
-      padding: 28px;
-      transition: transform 0.1s;
-      transform-style: preserve-3d;
-      transform: perspective(800px) rotateX(0deg) rotateY(0deg);
-      will-change: transform;
-      box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.6);
-    }
-
-    .project-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-
-    .project-btns {
-      display: flex;
-      gap: 16px;
-      margin: 24px 0 12px;
-      flex-wrap: wrap;
-      /* buttons don't overflow */
-    }
-
-    .btn-live {
-      background: rgba(56, 189, 248, 0.2);
-      border: 1px solid #38bdf8;
-      color: white;
-      padding: 10px 22px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-live:hover {
-      background: #38bdf8;
-      color: black;
-    }
-
-    /* certs grid */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-    }
-
-    .cert-card {
-      padding: 28px 18px;
-      text-align: center;
-      border-radius: 28px;
-      background: rgba(20, 20, 40, 0.3);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(100, 180, 255, 0.2);
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .cert-card i {
-      font-size: 2.8rem;
-      background: linear-gradient(145deg, #818cf8, #2dd4bf);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .cert-card a {
-      word-break: break-word;
-      /* long links wrap */
-      margin-top: 8px;
-    }
-
-    /* contact form */
-    .contact-form {
-      max-width: 600px;
-      margin: 40px auto 0;
-      padding: 40px;
-      border-radius: 48px;
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 32px;
-    }
-
-    .input-group input,
-    .input-group textarea {
-      width: 100%;
-      padding: 16px 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(0, 200, 255, 0.2);
-      border-radius: 30px;
-      font-size: 1.1rem;
-      color: white;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    .input-group label {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #aaa;
-      pointer-events: none;
-      transition: 0.2s;
-      background: transparent;
-      padding: 0 5px;
-    }
-
-    .input-group textarea~label {
-      top: 30px;
-      transform: none;
-    }
-
-    .input-group input:focus,
-    .input-group textarea:focus {
-      border-color: #a78bfa;
-      box-shadow: 0 0 20px #4f46e5, 0 0 5px #38bdf8 inset;
-    }
-
-    .input-group input:focus~label,
-    .input-group input:not(:placeholder-shown)~label,
-    .input-group textarea:focus~label,
-    .input-group textarea:not(:placeholder-shown)~label {
-      top: -10px;
-      left: 15px;
-      font-size: 0.8rem;
-      background: #0a0a0f;
-      padding: 0 8px;
-      color: #38bdf8;
-    }
-
-    .input-group input::placeholder,
-    .input-group textarea::placeholder {
-      color: transparent;
-    }
-
-    .submit-btn {
-      background: linear-gradient(45deg, #2563eb, #2dd4bf);
-      border: none;
-      color: white;
-      padding: 16px 32px;
-      border-radius: 60px;
-      font-weight: 700;
-      width: 100%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #2563eb;
-    }
-
-    .submit-btn:hover {
-      box-shadow: 0 0 30px #a78bfa;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid rgba(0, 200, 255, 0.1);
-      margin-top: 30px;
-    }
-
-    .socials a {
-      color: #ccd;
-      font-size: 1.8rem;
-      margin: 0 12px;
-      transition: 0.2s;
-      display: inline-block;
-    }
-
-    .socials a:hover {
-      color: #38bdf8;
-      text-shadow: 0 0 15px cyan;
-    }
-
-    /* ========== RESPONSIVE FIXES (compact, mobile-first) ========== */
-    @media (max-width: 768px) {
-      h2 {
-        font-size: 2.2rem;
-      }
-
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-
-      .typed-container {
-        font-size: 1.6rem;
-      }
-
-      .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-        margin: 12px 16px 0;
-        padding: 16px;
-      }
-
-      .nav-links {
-        justify-content: center;
-      }
-
-      .nav-links a {
-        font-size: 0.95rem;
-        margin: 0 4px;
-      }
-
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-      }
-
-      .hero-content {
-        flex: auto;
-        width: 100%;
-      }
-
-      .glow-btn,
-      .resume-btn {
-        padding: 14px 30px;
-        font-size: 1rem;
-        margin-right: 8px;
-      }
-
-      .profile-image-wrapper img {
-        max-width: 260px;
-      }
-
-      .about-card {
-        padding: 30px;
-      }
-
-      .project-card h3 {
-        font-size: 1.6rem;
-      }
-
-      .contact-form {
-        padding: 30px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 60px 0;
-      }
-
-      h2 {
-        font-size: 1.9rem;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .typed-container {
-        font-size: 1.3rem;
-        min-height: 3rem;
-      }
-
-      .navbar {
-        padding: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.85rem;
-      }
-
-      .glow-btn,
-      .resume-btn {
-        display: block;
-        width: 100%;
-        margin: 10px 0 0;
-        text-align: center;
-      }
-
-      .glow-btn {
-        margin-top: 0;
-      }
-
-      .resume-btn {
-        justify-content: center;
-      }
-
-      .skills-grid {
-        gap: 20px;
-      }
-
-      .projects-grid {
-        gap: 24px;
-      }
-
-      .project-card {
-        padding: 20px;
-      }
-
-      .cert-card {
-        padding: 20px 12px;
-      }
-
-      .profile-image-wrapper img {
-        max-width: 220px;
-      }
-
-      .about-card {
-        padding: 24px;
-      }
-
-      .container {
-        padding: 0 16px;
-      }
-    }
-
-    /* minor fix: certificate links color */
-    .cert-card a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px dotted;
-    }
-
-    .cert-card a:hover {
-      color: #a78bfa;
-    }
-  </style>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <!-- floating particles (unchanged) -->
-  <div class="particles">
-    <div class="particle"
-      style="width: 400px; height: 400px; top: 5%; left: -5%; background: radial-gradient(circle, #4f46e580, #0891b280); animation-duration: 16s;">
+
+  <!-- Background Grids & Ambient Lights -->
+  <div class="cyber-grid"></div>
+  <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+  <div class="ambient-light light-1"></div>
+  <div class="ambient-light light-2"></div>
+  <div class="ambient-light light-3"></div>
+
+  <!-- Header Navigation -->
+  <header id="header" class="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#home" class="logo-container">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Neural Labs</span>
+        </a>
+        
+        <ul id="navLinks" class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#cases">Projects</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Rating</a></li>
+        
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <a href="#contact" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Get Quote</a>
+          <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="particle"
-      style="width: 600px; height: 600px; bottom: -10%; right: -5%; background: radial-gradient(circle, #a855f780, #0284c780); animation-duration: 22s; filter: blur(70px);">
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+          <div class="hero-badge">
+            <i class="fas fa-bolt"></i>
+            <span>COGNITIVE AUTOMATION & SOFTWARE ENGINEERING</span>
+          </div>
+          <h1 class="hero-title">
+            Engineered to <span class="gradient-text">Automate</span>.<br>
+            Built to <span class="gradient-text-cyan">Scale</span>.
+          </h1>
+          <div class="hero-description">
+            <p style="font-size: 1.25rem; font-weight: 500; margin-bottom: 12px; color: var(--text-bright);">
+              I'm Jilani, and I build high-performance:
+            </p>
+            <span id="typed-text" class="gradient-text-purple" style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; border-right: 2px solid var(--color-accent); padding-right: 6px;"></span>
+          </div>
+          <div class="hero-actions">
+            <a href="#pricing" class="btn btn-primary">Explore Packages</a>
+            <a href="#contact" class="btn btn-secondary"><i class="fas fa-calendar-alt"></i> Let's Connect</a>
+            <a href="https://drive.google.com/file/d/1x6jfx69WCbaajYHR3vbA6wP1QYLRLx5P/view?usp=sharing" class="btn btn-secondary" target="_blank" rel="noopener">
+              <i class="fas fa-download"></i> CV
+            </a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3 class="gradient-text-cyan">15+</h3>
+              <p>AI Deployments</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="gradient-text-purple">99%</h3>
+              <p>Delivery Rate</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="gradient-text">10x</h3>
+              <p>Ops Acceleration</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-aos="zoom-in" data-aos-duration="1200">
+          <div class="visual-globe"></div>
+          <div class="founder-avatar-container">
+            <img src="formal image.jpeg" alt="Jilani - Founder of Neural Labs">
+          </div>
+          <div class="tech-node node-1" title="FastAPI Backend"><i class="fas fa-bolt"></i></div>
+          <div class="tech-node node-2" title="LangGraph Pipelines"><i class="fas fa-diagram-project"></i></div>
+          <div class="tech-node node-3" title="React UI Engine"><i class="fab fa-react"></i></div>
+        </div>
+      </div>
     </div>
-    <div class="particle"
-      style="width: 350px; height: 350px; top: 40%; left: 20%; background: #2563eb30; filter: blur(60px); animation-duration: 19s;">
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">Next-Gen Cognitive Services</h2>
+        <p class="section-subtitle">We design and integrate intelligent pipelines to automate processes and unlock scalability.</p>
+      </div>
+
+      <div class="services-tabs-nav">
+        <button class="tab-btn active" data-tab="aiDevTab">AI Development</button>
+        <button class="tab-btn" data-tab="webDevTab">Web Engineering</button>
+      </div>
+
+      <!-- AI Development panel -->
+      <div id="aiDevTab" class="services-panel active">
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="service-card glass" data-aos="fade-up">
+            <div class="service-icon"><i class="fas fa-brain"></i></div>
+            <h3>Agentic Chatbot</h3>
+            <p>Deploy autonomous software agents capable of executing multi-step business logic, decision-making, and live web research using LangGraph & CrewAI architectures.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> LangGraph Multi-Agent Flows</li>
+              <li><i class="fas fa-check"></i> Persistent Session State</li>
+              <li><i class="fas fa-check"></i> Human-in-the-Loop Routing</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Get a draft plan <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card glass cyan" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon"><i class="fas fa-database"></i></div>
+            <h3>Custom RAG Systems</h3>
+            <p>Ground LLMs on secure company databases. Build contextual search pipelines over PDFs, SQL tables, and APIs with FAISS, Pinecone, and metadata filtering.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> FAISS Vector Database</li>
+              <li><i class="fas fa-check"></i> Metadata Filtering & Hybrid Search</li>
+              <li><i class="fas fa-check"></i> Secure Document Preprocessing</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Consult on RAG <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card glass" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon"><i class="fas fa-sliders"></i></div>
+            <h3>Custom LLM Fine-Tuning</h3>
+            <p>Optimize lightweight open-source models (Llama 3.3, Mistral) for specialized tasks to reduce API costs, eliminate latencies, and retain absolute data ownership.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> LoRA / QLoRA Optimization</li>
+              <li><i class="fas fa-check"></i> Domain-Specific Datasets</li>
+              <li><i class="fas fa-check"></i> Low-Latency Local Deployment</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Discuss Custom LLMs <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web Engineering panel -->
+      <div id="webDevTab" class="services-panel">
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="service-card glass cyan" data-aos="fade-up">
+            <div class="service-icon"><i class="fas fa-server"></i></div>
+            <h3>Website Development</h3>
+            <p>We create clean, responsive, and modern websites for businesses, startups, and personal brands. Fast, mobile-friendly, and easy to manage.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Responsive Design</li>
+              <li><i class="fas fa-check"></i> HTML, CSS, JavaScript & React</li>
+              <li><i class="fas fa-check"></i> Contact Forms & Basic Animations</li>
+              <li><i class="fas fa-check"></i> SEO-Friendly Structure</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Build my website <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card glass" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon"><i class="fas fa-bolt"></i></div>
+            <h3>E-Commerce Websites</h3>
+            <p>Launch your online store with secure payments, product management, and a smooth shopping experience for your customers.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Product Catalog & Shopping Cart</li>
+              <li><i class="fas fa-check"></i> Razorpay/Stripe Integration</li>
+              <li><i class="fas fa-check"></i> Admin Dashboard</li>
+              <li><i class="fas fa-check"></i> Mobile & SEO Optimization</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Start my online store <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card glass cyan" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon"><i class="fas fa-store"></i></div>
+            <h3>AI Chatbot Integration</h3>
+            <p>Add intelligent chatbots to your website for customer support, lead generation, and automated business interactions.</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> AI Customer Support Bot</li>
+              <li><i class="fas fa-check"></i> WhatsApp & Website Integration</li>
+              <li><i class="fas fa-check"></i> FAQ Automation</li>
+              <li><i class="fas fa-check"></i> 24/7 Lead Collection</li>
+            </ul>
+            <a href="#contact" class="service-learn-more">Add an AI chatbot <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="particle"
-      style="width: 500px; height: 500px; top: 70%; left: 70%; background: #06b6d440; filter: blur(80px); animation-duration: 25s;">
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="cases" class="cases-section">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">Deployments</span>
+        <h2 class="section-title">Production Implementations</h2>
+        <p class="section-subtitle">Real-world systems engineered with modern backend scalability and AI integration.</p>
+      </div>
+
+      <div class="case-studies-grid">
+        <!-- Project 1 -->
+        <div class="case-card" data-aos="fade-right">
+          <img src="assets/case_chatbot.jpg" alt="Agentic Chatbot Platform" class="case-card-bg">
+          <div class="case-card-overlay"></div>
+          <div class="case-card-content">
+            <span class="case-tag">Agentic AI Platform</span>
+            <h3>Agentic Chatbot Platform</h3>
+            <p>A production-ready AI Agent platform built using LangGraph, FastAPI, and React. Features real-time typewriter streaming, persistent chat history memory, search integration, and Groq/OpenAI routing.</p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Groq API</span>
+              <span class="tech-tag">Render</span>
+            </div>
+            <div class="case-links">
+              <a href="https://agentic-chatbot-fastapi.vercel.app/" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fas fa-rocket"></i> Live Demo
+              </a>
+              <a href="https://github.com/jilanipasha1011/AGENTIC-CHATBOT-FASTAPI" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> Source
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="case-card" data-aos="fade-left">
+          <img src="assets/case_validator.jpg" alt="Startup Validator" class="case-card-bg">
+          <div class="case-card-overlay"></div>
+          <div class="case-card-content">
+            <span class="case-tag">Market Intelligence</span>
+            <h3>Check-Startup-Validator</h3>
+            <p>AI-powered platform evaluating startup feasibility using multi-agent routing. Scrapes competitor targets using Tavily and builds detailed revenue analyses and MVP backlogs.</p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">Multi-Agent</span>
+              <span class="tech-tag">Tavily AI</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+            <div class="case-links">
+              <a href="https://check-startup-validator.vercel.app/" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fas fa-rocket"></i> Live Demo
+              </a>
+              <a href="https://github.com/jilanipasha1011/CHECK-STARTUP-VALIDATOR" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> Source
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="case-card" data-aos="fade-right">
+          <img src="assets/case_legal.jpg" alt="AIAdvocate Agent" class="case-card-bg">
+          <div class="case-card-overlay"></div>
+          <div class="case-card-content">
+            <span class="case-tag">RAG Architecture</span>
+            <h3>AIAdvocate Legal RAG</h3>
+            <p>Intelligent legal assistant grounding Llama 3.3 models to IPC & CrPC files. Developed vector index embedding logic using FAISS, LangChain, and Streamlit.</p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">FAISS DB</span>
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">Llama 3.3</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Python</span>
+            </div>
+            <div class="case-links">
+              <a href="https://github.com/jilanipasha1011/AIAdvocate-Using-LLM-RAG" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="case-card" data-aos="fade-left">
+          <img src="assets/case_speed.jpg" alt="Data Speed Tester" class="case-card-bg">
+          <div class="case-card-overlay"></div>
+          <div class="case-card-content">
+            <span class="case-tag">Web Engineering</span>
+            <h3>Data Speed Tester</h3>
+            <p>Analytical web utility testing network throughput in real-time. Features SVG dials, custom progress animations, and historical speed charting using Chart.js.</p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">HTML5 / CSS3</span>
+              <span class="tech-tag">Vanilla JS</span>
+              <span class="tech-tag">Chart.js</span>
+              <span class="tech-tag">Fetch API</span>
+            </div>
+            <div class="case-links">
+              <a href="https://data-speed-tester.vercel.app/" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fas fa-rocket"></i> Live Demo
+              </a>
+              <a href="https://github.com/jilanipasha1011/data-speed-tester" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> Source
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Packages Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">Pricing Plans</span>
+        <h2 class="section-title">Scalable Development Packages</h2>
+        <p class="section-subtitle">Select a tier optimized for your launch velocity. Clear scope, detailed deliverables, no surprises.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Basic -->
+        <div class="pricing-card glass" data-aos="fade-up">
+          <div class="pricing-header">
+            <span class="pricing-name">Basic Package</span>
+            <div class="pricing-price">
+              <span class="price-num">$199</span>
+              <span class="price-term">/ project</span>
+            </div>
+            <p class="pricing-desc">Perfect for startups and small businesses.</p>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-deliverables">
+            <li><i class="fas fa-circle-check"></i> Responsive Landing Page</li>
+            <li><i class="fas fa-circle-check"></i> Portfolio Website</li>
+            <li><i class="fas fa-circle-check"></i> Basic AI Chatbot Integration</li>
+            <li><i class="fas fa-circle-check"></i> Contact Form Setup</li>
+            <li><i class="fas fa-circle-check"></i>Mobile-Friendly Design</li>
+            <li><i class="fas fa-circle-check"></i>7 Days Free Support</li>
+            <li class="excluded"><i class="fas fa-circle-xmark"></i> Dedicated Admin Dashboard</li>
+            <li class="excluded"><i class="fas fa-circle-xmark"></i> LangGraph Agentic Pipeline</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary pricing-cta">Book Basic Plan</a>
+        </div>
+
+        <!-- Standard -->
+        <div class="pricing-card glass" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-header">
+            <span class="pricing-name">Standard Plan</span>
+            <div class="pricing-price">
+              <span class="price-num">$499</span>
+              <span class="price-term">/ project</span>
+            </div>
+            <p class="pricing-desc">Best for growing businesses.</p>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-deliverables">
+            <li><i class="fas fa-circle-check"></i> Complete Business Website (5–10 Pages)</li>
+            <li><i class="fas fa-circle-check"></i> Custom AI Chatbot (OpenAI/Gemini)</li>
+            <li><i class="fas fa-circle-check"></i> E-Commerce Integration</li>
+            <li><i class="fas fa-circle-check"></i> Admin Dashboard</li>
+            <li><i class="fas fa-circle-check"></i> SEO Layout Optimization</li>
+            <li><i class="fas fa-circle-check"></i> 30 Days Maintenance Support</li>
+            <li class="excluded"><i class="fas fa-circle-xmark"></i> RAG Document indexing</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary pricing-cta">Book Standard Plan</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card glass popular" data-aos="fade-up" data-aos-delay="200">
+          <div class="popular-badge">Recommended Plan</div>
+          <div class="pricing-header">
+            <span class="pricing-name">Premium Agency</span>
+            <div class="pricing-price">
+              <span class="price-num">$1499</span>
+              <span class="price-term">/ project</span>
+            </div>
+            <p class="pricing-desc">Custom AI tools, agentic automation flows, and full-stack SaaS builds.</p>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-deliverables">
+            <li><i class="fas fa-circle-check"></i> RAG-Based AI Chatbot</li>
+            <li><i class="fas fa-circle-check"></i> LangChain/LangGraph Integration</li>
+            <li><i class="fas fa-circle-check"></i> Vector Database (FAISS/Pinecone)</li>
+            <li><i class="fas fa-circle-check"></i> Voice Assistant Integration</li>
+            <li><i class="fas fa-circle-check"></i> Custom AI Workflows</li>
+            <li><i class="fas fa-circle-check"></i> API Integrations</li>
+            <li><i class="fas fa-circle-check"></i> Cloud Deployment (AWS/Render/Vercel)</li>
+            <li><i class="fas fa-circle-check"></i> 60 Days Priority Support</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary pricing-cta">Book Premium Plan</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card glass enterprise" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-header">
+            <span class="pricing-name">Enterprise Suite</span>
+            <div class="pricing-price">
+              <span class="price-num">Custom</span>
+              <span class="price-term">/ retainer</span>
+            </div>
+            <p class="pricing-desc">For large organizations and long-term partnerships.</p>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-deliverables">
+            <li><i class="fas fa-circle-check"></i> Dedicated Development Team</li>
+            <li><i class="fas fa-circle-check"></i> Full-Stack SaaS Development</li>
+            <li><i class="fas fa-circle-check"></i> AI Agent Systems</li>
+            <li><i class="fas fa-circle-check"></i> CRM/ERP Integrations</li>
+            <li><i class="fas fa-circle-check"></i> Custom LLM Fine-Tuning</li>
+            <li><i class="fas fa-circle-check"></i> Ongoing Maintenance & Monitoring</li>
+            <li><i class="fas fa-circle-check"></i> Monthly Retainer Options</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary pricing-cta">Book Enterprise Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">Client Reviews</span>
+        <h2 class="section-title">Trusted by Business Leaders</h2>
+        <p class="section-subtitle">Don't just take our word for it. Here is what client partners say about our work.</p>
+      </div>
+
+      <div class="testimonials-slider-container">
+        <div id="sliderTrack" class="testimonials-track">
+          <!-- Card 1 -->
+          <div class="testimonial-card glass">
+            <div class="testimonial-header">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <i class="fas fa-quote-right" style="font-size: 1.5rem; opacity: 0.15; color: var(--color-secondary);"></i>
+            </div>
+            <p class="testimonial-quote">"The multi-agent platform Jilani built for us revolutionized our customer service operations. Chat responses stream instantly, and the search routing between Groq and OpenAI saves us hundreds of dollars in API credits monthly. Fast, reliable, and premium work!"</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Marcus Thompson">
+              </div>
+              <div class="client-info">
+                <h4>Marcus Thompson</h4>
+                <p>CTO, FlowTech Solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card glass">
+            <div class="testimonial-header">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <i class="fas fa-quote-right" style="font-size: 1.5rem; opacity: 0.15; color: var(--color-primary);"></i>
+            </div>
+            <p class="testimonial-quote">"Working with Neural Labs on our Legal RAG assistant was seamless. They understood the complexities of IPC/CrPC indexing, built clean vector retrieval pipelines, and delivered a highly responsive interface that our lawyers love. Highly recommend their services."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100" alt="Sarah Lin">
+              </div>
+              <div class="client-info">
+                <h4>Sarah Lin</h4>
+                <p>Founder, LexConsult India</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card glass">
+            <div class="testimonial-header">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <i class="fas fa-quote-right" style="font-size: 1.5rem; opacity: 0.15; color: var(--color-accent);"></i>
+            </div>
+            <p class="testimonial-quote">"We contracted Neural Labs to build an analytical startup checker. The pipeline automatically analyzes competitive landscapes and outputs a structured PDF business backlog in seconds. It has accelerated our investment pipeline vetting by 70%."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100" alt="David Wright">
+              </div>
+              <div class="client-info">
+                <h4>David Wright</h4>
+                <p>Managing Director, Zenith Ventures</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <button id="sliderPrev" class="slider-btn" aria-label="Previous Slide"><i class="fas fa-arrow-left"></i></button>
+          <button id="sliderNext" class="slider-btn" aria-label="Next Slide"><i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Schedule a Cognitive Briefing</h2>
+        <p class="section-subtitle">Shoot a message detailing your technical bottlenecks, and let's structure an integration roadmap.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-cards" data-aos="fade-right">
+          <!-- Info 1 -->
+          <div class="info-card glass">
+            <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="info-details">
+              <h4>Operations Center</h4>
+              <p>Noida / Delhi NCR, India</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Fully integrated remote delivery globally.</p>
+            </div>
+          </div>
+
+          <!-- Info 2 -->
+          <div class="info-card glass">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-details">
+              <h4>Direct Channels</h4>
+              <p>jilanipasha1011@gmail.com</p>
+              <a href="mailto:jilanipasha1011@gmail.com" class="info-link">Email Now <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+
+          <!-- Info 3 -->
+          <div class="info-card glass">
+            <div class="info-icon"><i class="fas fa-network-wired"></i></div>
+            <div class="info-details">
+              <h4>Social Core</h4>
+              <p>GitHub Repository Core & Professional Networks.</p>
+              <div style="display: flex; gap: 16px; margin-top: 8px;">
+                <a href="https://github.com/jilanipasha1011" class="info-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/jilani-pasha1011" class="info-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper glass" data-aos="fade-left">
+          <form id="contactForm" action="https://formspree.io/f/maqdarwy" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formName" class="form-label">Full Name</label>
+                <input type="text" id="formName" name="name" class="form-input" placeholder="e.g. John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="formEmail" class="form-label">Email Address</label>
+                <input type="email" id="formEmail" name="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="formPlan" class="form-label">Target Package Plan</label>
+              <select id="formPlan" name="plan" class="form-input" style="background: var(--bg-tertiary);" required>
+                <option value="none">Select Option...</option>
+                <option value="basic">Basic AI & Web Package ($1,499)</option>
+                <option value="standard">Standard Business/E-com ($3,499)</option>
+                <option value="premium">Premium Agentic AI Integration ($6,999)</option>
+                <option value="enterprise">Enterprise Custom Retainer Plan</option>
+                <option value="custom">Other Custom Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="formMessage" class="form-label">Project Integration Details</label>
+              <textarea id="formMessage" name="message" class="form-input" placeholder="Tell us about the APIs, databases, or workflows you want to automate..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Deploy Proposal <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="logo-container" style="margin-bottom: 20px;">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Neural Labs</span>
+          </a>
+          <p>Next-generation cognitive agency engineering custom automation, RAG pipelines, and highly scalable digital systems.</p>
+          <div class="footer-socials">
+            <a href="https://github.com/jilanipasha1011" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jilani-pasha1011" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/jilanipasha1011/" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Agentic Solutions</a></li>
+            <li><a href="#services">RAG Document search</a></li>
+            <li><a href="#services">SaaS Implementations</a></li>
+            <li><a href="#services">FastAPI Custom Core</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Agency Info</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home Base</a></li>
+            <li><a href="#cases">Case Portfolio</a></li>
+            <li><a href="#pricing">Surgical Packages</a></li>
+            <li><a href="#contact">Get Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Neural Labs & Jilani. All Rights Reserved. Engineered for scaling.</p>
+        <p style="opacity: 0.5;">Based in Noida Delhi NCR / Remote Global Deliveries</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Chatbot Widget -->
+  <button id="chatbotTrigger" class="chatbot-trigger" aria-label="Ask NeuroBot AI">
+    <i class="fas fa-comment-dots"></i>
+  </button>
+  
+  <div id="chatbotContainer" class="chatbot-container glass">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-bot-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="chat-bot-status">
+          <h4>NeuroBot</h4>
+          <p>Active</p>
+        </div>
+      </div>
+      <button id="chatClose" class="chat-header-close" aria-label="Close Chat">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="chatMessages" class="chat-messages"></div>
+
+    <!-- Quick Replies Container -->
+    <div id="quickReplies" class="chat-quick-replies"></div>
+
+    <!-- Input Box Area -->
+    <div class="chat-input-area">
+      <input type="text" id="chatInputField" class="chat-input-field" placeholder="Ask about AI packages, legal RAG, prices...">
+      <button id="chatSendBtn" class="chat-send-btn" aria-label="Send Message">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
   </div>
 
-  <!-- navbar (no change, but now mobile friendly due to CSS) -->
-  <nav class="navbar glass">
-    <span class="logo">My Portfolio Website</span>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <main class="container">
-    <!-- hero section (flex updated) -->
-    <section id="home" class="hero">
-      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-        <h1>Building the future<br><span class="gradient-text">one model at a time</span></h1>
-        <div class="typed-container">
-          <span>I'm </span><span id="typed-text"></span>
-        </div>
-        <a href="#contact" class="glow-btn">Let's connect</a>
-        <a href="https://drive.google.com/file/d/1x6jfx69WCbaajYHR3vbA6wP1QYLRLx5P/view?usp=sharing" class="resume-btn"
-          id="resumeDownload"><i class="fas fa-download"></i> Download CV</a>
-      </div>
-
-      <div class="profile-image-wrapper" data-aos="fade-left">
-        <img src="formal image.jpeg" alt="jilani"
-          style="width:70%; height: 70%; object-fit: cover; border-radius: 50%;">
-      </div>
-    </section>
-
-    <!-- about -->
-    <section id="about" data-aos="fade-up">
-      <h2>About me</h2>
-      <div class="about-card glass">
-        <p style="font-size: 1.3rem;">I'm Jilani, Computer Science student & aspiring AI/ML engineer. I love turning
-          data into intelligence into reality. I Currently building deep learning models and LLM & RAG based Systems &
-          LLM Fine Tuning And I also work with Android development, contributing to open-source. Always exploring the
-          edge of AI.</p>
-        <p style="margin-top: 20px; color: #b0d0ff;"><i class="fas fa-map-pin" style="color: #38bdf8;"></i> Noida Delhi
-          / remote</p>
-      </div>
-    </section>
-
-    <!-- skills -->
-    <section id="skills" data-aos="fade-up">
-      <h2>Technical Skills & Tools</h2>
-      <div class="skills-grid" id="skillsContainer">
-        <div class="glass" style="padding: 30px;">
-          <h3 style="margin-bottom: 24px; color: #38bdf8;">Programming languages</h3>
-          <div class="skill-item" data-percent="90">
-            <div class="skill-header"><span>Python</span><span>90%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="85">
-            <div class="skill-header"><span>java:</span><span>85%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="80">
-            <div class="skill-header"><span>SQL </span><span>80%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="80">
-            <div class="skill-header"><span>HTML & CSS </span><span>80%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass" style="padding: 30px;">
-          <h3 style="margin-bottom: 24px; color: #38bdf8;">Technologies & Core</h3>
-          <div class="skill-item" data-percent="75">
-            <div class="skill-header"><span>Generative AI </span><span>75%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="70">
-            <div class="skill-header"><span>Deep Learning </span><span>70%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>Machine Learning </span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>Android Developer </span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass" style="padding: 30px;">
-          <h3 style="margin-bottom: 24px; color: #38bdf8;">Frameworks & Libraries</h3>
-          <div class="skill-item" data-percent="75">
-            <div class="skill-header"><span>Streamlit </span><span>75%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="70">
-            <div class="skill-header"><span>Scikit Learn </span><span>70%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>Pandas</span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>LangChain</span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass" style="padding: 30px;">
-          <h3 style="margin-bottom: 24px; color: #38bdf8;">Tools/Platforms</h3>
-          <div class="skill-item" data-percent="75">
-            <div class="skill-header"><span>MySQL</span><span>75%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="70">
-            <div class="skill-header"><span>Jupyter Notebook </span><span>70%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>GitHub</span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-          <div class="skill-item" data-percent="65">
-            <div class="skill-header"><span>Android Studio</span><span>65%</span></div>
-            <div class="progress-bar-bg">
-              <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- projects -->
-    <section id="projects" data-aos="fade-up">
-      <h2>Featured projects</h2>
-      <div class="projects-grid" id="projectGrid">
-
-        <div class="project-card tilt-card">
-          <h3 class="gradient-text">Agentic Chatbot Platform</h3>
-          <p>A production-ready AI Agent platform built using LangGraph, FastAPI, and React. The system features
-            real-time typewriter streaming responses, persistent chat memory, intelligent web search integration with
-            Tavily, and dynamic model routing between Groq and OpenAI for optimized performance and low-latency AI
-            interactions. Successfully deployed in production with the frontend hosted on Vercel and the backend
-            deployed on Render, delivering a fully live and scalable end-to-end AI application.<br>
-          </p>
-          <div class="project-btns"><a href="https://agentic-chatbot-fastapi.vercel.app/" class="btn-live"><i
-                class="fas fa-rocket"></i> Live demo</a><a
-              href="https://github.com/jilanipasha1011/AGENTIC-CHATBOT-FASTAPI" class="btn-live">GitHub</a></div>
-        </div>
-
-
-
-
-        <div class="project-card tilt-card">
-          <h3 class="gradient-text">Check-Startup-Validator With AI Powered</h3>
-          <p>Check-Startup-Validator is an AI-powered platform that analyzes startup ideas using a LangGraph multi-agent
-            pipeline. It evaluates market demand, competitors, revenue models, and MVP planning with Groq AI and Tavily
-            web search. Built with FastAPI and React, the project is fully deployed on Render and Vercel.<br>
-          </p>
-          <div class="project-btns"><a href="https://check-startup-validator.vercel.app/" class="btn-live"><i
-                class="fas fa-rocket"></i> Live demo</a><a
-              href="https://github.com/jilanipasha1011/CHECK-STARTUP-VALIDATOR" class="btn-live">GitHub</a></div>
-        </div>
-
-
-
-        <div class="project-card tilt-card">
-          <h3 class="gradient-text">AIAdvocate Agent</h3>
-          <p>Built an AI-powered legal assistant for Indian law to help users understand rights, analyze case documents,
-            and get suggestions using IPC, CrPC, and the Constitution. Implemented LLM with RAG architecture and planned
-            features like multilingual support, voice-enabled filing, predictive outcomes, and Supreme Court database
-            integration.<br>
-            <b style="color: #38bdf8;">Tech Stack:</b> Python, Streamlit, LLM, RAG, LangChain, Groq API (LLaMA 3.3 70B),
-            FAISS Vector Database, Tavily API
-          </p>
-          <div class="project-btns"><a href="#" class="btn-live"><i class="fas fa-rocket"></i> Live demo</a><a
-              href="https://github.com/jilanipasha1011/AIAdvocate-Using-LLM-RAG" class="btn-live">GitHub</a></div>
-        </div>
-
-
-
-
-        <div class="project-card tilt-card">
-          <h3 class="gradient-text">Data Speed Tester</h3>
-          <p>Developed a Data Speed Tester web app using HTML, CSS, and JavaScript to measure internet speed in
-            real-time. Implemented interactive UI and visual feedback to display download, upload, and latency results
-            efficiently.<br>
-            <b style="color: #38bdf8;">Tech Stack:</b> HTML, CSS, JavaScript, Fetch API, Chart.js, UI Design, Real-time
-            Data Visualization.
-          </p>
-          <div class="project-btns"><a href="https://data-speed-tester.vercel.app/" class="btn-live"><i
-                class="fas fa-rocket"></i> Live demo</a><a href="https://github.com/jilanipasha1011/data-speed-tester"
-              class="btn-live">GitHub</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- certifications -->
-    <section id="certifications" data-aos="fade-up">
-      <h2>Certifications</h2>
-      <div class="certs-grid">
-        <div class="cert-card"><i class="fas fa-database"></i>
-          <h3>Data Science With AI/ML</h3>
-          <p>LPU Enhancement</p>
-          <a href="https://drive.google.com/file/d/1us6Cewvicl_7eqxFufLmO_A9ZdJSomol/view?usp=sharing">Certificate
-            Link</a>
-        </div>
-        <div class="cert-card"><i class="fas fa-brain"></i>
-          <h3> Generative AI</h3>
-          <p>Udemy</p>
-          <a href="https://drive.google.com/file/d/1Vhw6Zm-UhnPn1QyJluAjEQetElHbjX9r/view?usp=sharing">Certificate
-            Link</a>
-        </div>
-        <div class="cert-card"><i class="fas fa-shield-alt"></i>
-          <h3> Introduction to Ethical Hacking </h3>
-          <p>Greate Learning</p>
-          <a href="https://drive.google.com/file/d/1yomBnrBZobZZ7GtwDL_9QHgFnMMjEyT6/view?usp=sharing">Certificate
-            Link</a>
-        </div>
-        <div class="cert-card"><i class="fas fa-code"></i>
-          <h3>Java Programming</h3>
-          <p>LPU Department</p>
-          <a href="https://drive.google.com/file/d/1or8hZ2ix1a4VEJRYzjBa0vSPXhKGaouX/view?usp=sharing">Certificate
-            Link</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Training -->
-    <section id="training" data-aos="fade-up">
-      <h2>Training & Experience</h2>
-      <div class="about-card glass">
-        <h1 style="margin-bottom: 24px; color: #38bdf8;">Data Scientist With AI / ML</h1>
-        <p style="font-size: 1.3rem;">Completed a practical Data Science training focused on transforming raw data into
-          meaningful, actionable insights.
-          Gained hands-on experience in data preprocessing, cleaning, and visualization.
-          Built and evaluated predictive models using real-world datasets.<br>
-          <b style="color: #38bdf8;">Tech Stack:</b> Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn,
-          Jupyter Notebook, Power BI
-        </p>
-      </div>
-    </section>
-
-    <!-- contact -->
-    <!-- contact with animated form -->
-    <section id="contact" data-aos="fade-up">
-      <h2>Let's innovate together</h2>
-      <div class="contact-form glass">
-        <form id="contactForm" action="https://formspree.io/f/maqdarwy" method="POST">
-          <div class="input-group">
-            <input type="text" id="name" name="name" placeholder=" " required>
-            <label for="name">Full name</label>
-          </div>
-          <div class="input-group">
-            <input type="email" id="email" name="email" placeholder=" " required>
-            <label for="email">Email address</label>
-          </div>
-          <div class="input-group">
-            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
-            <label for="message">Your message</label>
-          </div>
-          <button type="submit" class="submit-btn">Send message <i class="fas fa-paper-plane"></i></button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="socials">
-      <a href="https://github.com/jilanipasha1011?tab=repositories"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/jilani-pasha1011"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/jilanipasha1011/"><i class="fab fa-instagram"></i></a>
-    </div>
-    <p style="margin-top: 20px; color: #aab;">© 2026 Jilani Data Scientist AI/ML engineer</p>
-  </footer>
-
-  <!-- scripts (unchanged) -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    (function () {
-      AOS.init({ duration: 800, once: true, offset: 120 });
-
-      const typedSpan = document.getElementById('typed-text');
-      const roles = ['Data Scientist', 'AI/ML Engineer', 'Android Developer'];
-      let roleIndex = 0, charIndex = 0, isDeleting = false;
-      function typeEffect() {
-        const currentRole = roles[roleIndex];
-        if (isDeleting) {
-          typedSpan.textContent = currentRole.substring(0, charIndex--);
-        } else {
-          typedSpan.textContent = currentRole.substring(0, charIndex++);
-        }
-        if (!isDeleting && charIndex === currentRole.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 1500);
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-          setTimeout(typeEffect, 200);
-        } else {
-          setTimeout(typeEffect, isDeleting ? 50 : 100);
-        }
-      }
-      typeEffect();
-
-      const skillItems = document.querySelectorAll('.skill-item');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const bar = entry.target.querySelector('.progress-fill');
-            const percent = entry.target.dataset.percent;
-            if (bar && percent) {
-              bar.style.width = percent + '%';
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      skillItems.forEach(item => observer.observe(item));
-
-      const cards = document.querySelectorAll('.tilt-card');
-      const maxRotate = 6;
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateY = ((x - centerX) / centerX) * maxRotate;
-          const rotateX = ((centerY - y) / centerY) * maxRotate;
-          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-          card.style.transition = 'transform 0.1s';
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
-          card.style.transition = 'transform 0.3s';
-        });
-      });
-    })();
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ duration: 800, once: true, offset: 80 });
+    });
   </script>
+  <script src="app.js"></script>
+  <script src="chatbot.js"></script>
 </body>
-
 </html>
